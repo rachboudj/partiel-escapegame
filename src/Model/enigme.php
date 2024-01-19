@@ -30,4 +30,13 @@ class Enigme {
         $query->execute();
         return $query->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function addReponse($idQuestion, $reponseUser, $isCorrect) {
+        $requete = "INSERT INTO reponses (id_question, reponse_user, isTrue) VALUES (:id_question, :reponse_user, :isTrue)";
+        $query = $this->pdo->prepare($requete);
+        $query->bindValue(':id_question', $idQuestion, PDO::PARAM_INT);
+        $query->bindValue(':reponse_user', $reponseUser, PDO::PARAM_STR);
+        $query->bindValue(':isTrue', $isCorrect, PDO::PARAM_BOOL);
+        $query->execute();
+    }
 }
