@@ -23,13 +23,15 @@
 
 <?php if (!empty($success)) { ?>
     <p class="success-message"><?php echo $success; ?></p>
-
-<?php }
+    <?php if (isset($link)) { ?>
+        <p>Voici le lien de votre énigme : <a target="_blank" href="<?php echo $link; ?>">Répondre à l'énigme</a></p>
+    <?php }
+}
 
 if (!empty($errorMessage)) { ?>
     <p class="error-message"><?php echo $errorMessage; ?></p>
 <?php }
 
-$content = ob_get_clean(); 
+$content = ob_get_clean();
 
 require('./src/View/layout.php');
