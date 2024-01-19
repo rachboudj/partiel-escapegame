@@ -6,8 +6,10 @@
     <div class="card">
         <h3><?= $enigmes['question']; ?></h3>
 
-        <?php if (!empty($message)) { ?>
-            <p><?= $message; ?></p>
+        <?php if (isset($success)) { ?>
+            <p class="message success"><?= $success; ?></p>
+        <?php } elseif (isset($error)) { ?>
+            <p class="message error"><?= $error; ?></p>
         <?php } ?>
 
             <form method="POST" action="">
