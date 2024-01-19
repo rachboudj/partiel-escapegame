@@ -1,11 +1,11 @@
 <?php $title = "Accueil" ?>
 
 <?php ob_start(); ?>
-<h1>Posez votre question !</h1>
+<h1>Écrivez votre énigme !</h1>
 
 
 <form method="POST" action="index.php?page=accueil">
-    <label for="question">Question</label>
+    <label for="question">Énigme</label>
     <input type="text" name="question" />
     <span class="error"><?php if (!empty($errors['question'])) {
                             echo $errors['question'];
