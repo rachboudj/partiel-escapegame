@@ -22,7 +22,7 @@ function accueil() {
             $link = "index.php?page=detailsQuestions&enigmeId=" . $idEnigme;
         } else {
             $success = "";
-            $errorMessage = "Votre énigme n'a pas été enregistré... !";
+            $errorMessage = "Votre énigme n'a pas été enregistré...";
         }
     }
 
