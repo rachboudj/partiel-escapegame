@@ -1,0 +1,8 @@
+{
+    "database": {
+        "db_name": "escapegamenws",
+        "host": "localhost",
+        "user": "rachid",
+        "password": "rachidroot"
+    }
+}
