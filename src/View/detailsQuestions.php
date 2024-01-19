@@ -5,6 +5,7 @@
 <div class="container">
     <div class="card">
         <h3><?= $enigmes['question']; ?></h3>
+        <p>Taux de réussite : <?= round($tauxReussite, 2); ?>%</p>
 
         <?php if (isset($success)) { ?>
             <p class="message success"><?= $success; ?></p>
