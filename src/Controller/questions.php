@@ -9,6 +9,9 @@ function questions() {
 
     $enigmes = $model->showEnigme();
 
+    foreach ($enigmes as $key => $enigme) {
+        $enigmes[$key]['taux_reussite'] = $model->getTauxReussite($enigme['id_question']);
+    }
 
     require('./src/View/questions.php');
 }
@@ -21,6 +24,7 @@ function detailsQuestions()
     if (!empty($_GET['enigmeId']) && ctype_digit($_GET['enigmeId'])) {
         $id = $_GET['enigmeId'];
         $enigmes = $model->getDetailsEnigme($id);
+        $tauxReussite = $model->getTauxReussite($id);
 
         if (!empty($_POST['submit'])) {
             $reponse_user = strtolower(trim($_POST['reponse_user']));
