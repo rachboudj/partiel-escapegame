@@ -26,6 +26,10 @@
 
 <?php }
 
+if (!empty($errorMessage)) { ?>
+    <p class="error-message"><?php echo $errorMessage; ?></p>
+<?php }
+
 $content = ob_get_clean(); 
 
-require('./src/View/layout.php'); ?>
+require('./src/View/layout.php');

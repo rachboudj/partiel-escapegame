@@ -19,7 +19,10 @@ function accueil() {
         if (count($errors) === 0) {
             $model->addEnigme($question, $reponse);
             $success = "Votre énigme a bien été enregistré !";
-        } 
+        } else {
+            $success = "";
+            $errorMessage = "Votre énigme n'a pas été enregistré... !";
+        }
     }
 
     require('./src/View/accueil.php');
