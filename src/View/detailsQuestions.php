@@ -11,7 +11,7 @@
     <?php if (isset($success)) { ?>
             <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20"><?= $success; ?></span>
         <?php } elseif (isset($error)) { ?>
-            <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20"><?= $error; ?></span>
+            <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-green-600/20"><?= $error; ?></span>
         <?php } ?>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
