@@ -24,7 +24,7 @@
 <?php if (!empty($success)) { ?>
     <p class="success-message"><?php echo $success; ?></p>
     <?php if (isset($link)) { ?>
-        <p>Voici le lien de votre énigme : <a target="_blank" href="<?php echo $link; ?>">Répondre à l'énigme</a></p>
+        <p>Voici le lien de votre énigme : <a target="_blank" href="<?php echo $link; ?>"><?php echo $link; ?></a></p>
     <?php }
 }
 
