@@ -1,13 +1,16 @@
 <?php
 
-class Enigme {
+class Enigme
+{
     private $pdo;
 
-    public function __construct($pdo) {
+    public function __construct($pdo)
+    {
         $this->pdo = $pdo;
     }
 
-    public function addEnigme($question, $reponse) {
+    public function addEnigme($question, $reponse)
+    {
         $requete = "INSERT INTO questions(question, reponse) VALUES (:question, :reponse)";
         $query = $this->pdo->prepare($requete);
         $query->bindValue(':question', $question, PDO::PARAM_STR);
@@ -16,14 +19,29 @@ class Enigme {
         return $this->pdo->lastInsertId();
     }
 
-    public function showEnigme() {
+    function deleteEnigme($id)
+    {
+        $requeteReponses = "DELETE FROM reponses WHERE id_question = :id_question";
+        $queryReponses = $this->pdo->prepare($requeteReponses);
+        $queryReponses->bindValue(':id_question', $id, PDO::PARAM_INT);
+        $queryReponses->execute();
+
+        $requete = "DELETE FROM questions WHERE id_question = :id_question";
+        $query = $this->pdo->prepare($requete);
+        $query->bindValue(':id_question', $id, PDO::PARAM_INT);
+        $query->execute();
+    }
+
+    public function showEnigme()
+    {
         $requete = "SELECT * FROM questions";
         $query = $this->pdo->prepare($requete);
         $query->execute();
         return $query->fetchAll();
     }
 
-    public function getDetailsEnigme($id) {
+    public function getDetailsEnigme($id)
+    {
         $requete = "SELECT * FROM questions WHERE id_question = :id_question";
         $query = $this->pdo->prepare($requete);
         $query->bindValue(':id_question', $id, PDO::PARAM_INT);
@@ -31,7 +49,8 @@ class Enigme {
         return $query->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function addReponse($idQuestion, $reponseUser, $isCorrect) {
+    public function addReponse($idQuestion, $reponseUser, $isCorrect)
+    {
         $requete = "INSERT INTO reponses (id_question, reponse_user, isTrue) VALUES (:id_question, :reponse_user, :isTrue)";
         $query = $this->pdo->prepare($requete);
         $query->bindValue(':id_question', $idQuestion, PDO::PARAM_INT);
@@ -40,7 +59,8 @@ class Enigme {
         $query->execute();
     }
 
-    public function getTauxReussite($id) {
+    public function getTauxReussite($id)
+    {
         $requeteTotal = "SELECT COUNT(*) FROM reponses WHERE id_question = :id_question";
         $queryTotal = $this->pdo->prepare($requeteTotal);
         $queryTotal->bindValue(':id_question', $id, PDO::PARAM_INT);
