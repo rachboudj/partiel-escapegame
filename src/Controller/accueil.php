@@ -17,13 +17,15 @@ function accueil() {
         $errors = validationTexte($errors, $reponse, 'reponse', 1, 100);
     
         if (count($errors) === 0) {
-            $model->addEnigme($question, $reponse);
+            $idEnigme = $model->addEnigme($question, $reponse);
             $success = "Votre énigme a bien été enregistré !";
+            $link = "http://127.0.0.1:8888/index.php?page=detailsQuestions&enigmeId=" . $idEnigme;
         } else {
             $success = "";
             $errorMessage = "Votre énigme n'a pas été enregistré... !";
         }
     }
+
 
     require('./src/View/accueil.php');
 }
