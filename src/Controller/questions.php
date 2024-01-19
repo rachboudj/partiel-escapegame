@@ -24,8 +24,11 @@ function detailsQuestions()
 
         if (!empty($_POST['submit'])) {
             $reponse_user = trim($_POST['reponse_user']);
+            $isCorrect = ($reponse_user == $enigmes['reponse']);
 
-            if ($reponse_user == $enigmes['reponse']) {
+            $model->addReponse($id, $reponse_user, $isCorrect);
+
+            if ($isCorrect) {
                 $success = "Bravo ! Votre réponse est correcte.";
             } else {
                 $error = "Dommage, ce n'est pas la bonne réponse. Essayez encore.";
