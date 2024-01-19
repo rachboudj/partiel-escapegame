@@ -11,6 +11,8 @@ if (isset($_GET['page'])) {
         accueil();
     } elseif ($_GET['page'] === 'questions') {
         questions();
+    } elseif ($_GET['page'] === 'detailsQuestions') {
+        detailsQuestions();
     }
 } else {
     accueil();
