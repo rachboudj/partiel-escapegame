@@ -14,4 +14,11 @@ class Enigme {
         $query->bindValue(':reponse', $reponse, PDO::PARAM_STR);
         $query->execute();
     }
+
+    public function showEnigme() {
+        $requete = "SELECT * FROM questions";
+        $query = $this->pdo->prepare($requete);
+        $query->execute();
+        return $query->fetchAll();
+    }
 }
