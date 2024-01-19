@@ -7,7 +7,7 @@
         <?php foreach ($enigmes as $enigme) { ?>
     <div class="card">
             <h3><?= $enigme['question']; ?></h3>
-            <button>Voir l'énigme</button>
+            <button><a href="index.php?page=detailsQuestions&enigmeId=<?= $enigme['id_question']; ?>">Voir l'énigme</a></button>
     </div>
         <?php } ?>
 </div>
