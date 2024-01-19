@@ -39,4 +39,24 @@ class Enigme {
         $query->bindValue(':isTrue', $isCorrect, PDO::PARAM_BOOL);
         $query->execute();
     }
+
+    public function getTauxReussite($id) {
+        $requeteTotal = "SELECT COUNT(*) FROM reponses WHERE id_question = :id_question";
+        $queryTotal = $this->pdo->prepare($requeteTotal);
+        $queryTotal->bindValue(':id_question', $id, PDO::PARAM_INT);
+        $queryTotal->execute();
+        $totalReponses = $queryTotal->fetchColumn();
+
+        $requeteCorrectes = "SELECT COUNT(*) FROM reponses WHERE id_question = :id_question AND isTrue = 1";
+        $queryCorrectes = $this->pdo->prepare($requeteCorrectes);
+        $queryCorrectes->bindValue(':id_question', $id, PDO::PARAM_INT);
+        $queryCorrectes->execute();
+        $reponsesCorrectes = $queryCorrectes->fetchColumn();
+
+        if ($totalReponses > 0) {
+            return ($reponsesCorrectes / $totalReponses) * 100;
+        } else {
+            return 0;
+        }
+    }
 }
