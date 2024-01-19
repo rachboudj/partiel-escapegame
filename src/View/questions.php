@@ -5,11 +5,12 @@
 
 <div class="container">
         <?php foreach ($enigmes as $enigme) { ?>
-    <div class="card">
-            <h3><?= $enigme['question']; ?></h3>
-            <p>Taux de réussite : <?= round($enigme['taux_reussite'], 2); ?>%</p>
-            <button><a href="index.php?page=detailsQuestions&enigmeId=<?= $enigme['id_question']; ?>">Voir l'énigme</a></button>
-    </div>
+                <div class="card">
+                        <h3><?= $enigme['question']; ?></h3>
+                        <p>Taux de réussite : <?= round($enigme['taux_reussite'], 2); ?>%</p>
+                        <button><a href="index.php?page=detailsQuestions&enigmeId=<?= $enigme['id_question']; ?>">Voir l'énigme</a></button>
+                        <button><a href="index.php?page=supprEnigme&enigmeId=<?= $enigme['id_question']; ?>">Supprimer l'énigme</a></button>
+                </div>
         <?php } ?>
 </div>
 
