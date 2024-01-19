@@ -12,7 +12,7 @@
             <nav>
                 <ul>
                     <li><a href="index.php?page=accueil">Accueil</a></li>
-                    <li><a href="index.php?page=questions">Toutes les questions</a></li>
+                    <li><a href="index.php?page=questions">Toutes les énigmes</a></li>
                 </ul>
             </nav>
         </header>
