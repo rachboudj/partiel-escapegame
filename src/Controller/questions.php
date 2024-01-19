@@ -44,3 +44,16 @@ function detailsQuestions()
 
     require './src/View/detailsQuestions.php';
 }
+
+function supprEnigme()
+{
+    $pdo = (new Database())->getPdo();
+    $model = new Enigme($pdo);
+
+    if (!empty($_GET['enigmeId']) && ctype_digit($_GET['enigmeId'])) {
+        $id = $_GET['enigmeId'];
+        $model->deleteEnigme($id);
+        header('Location: index.php?page=questions');
+        exit();
+    }
+}
