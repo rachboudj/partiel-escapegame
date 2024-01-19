@@ -23,8 +23,9 @@ function detailsQuestions()
         $enigmes = $model->getDetailsEnigme($id);
 
         if (!empty($_POST['submit'])) {
-            $reponse_user = trim($_POST['reponse_user']);
-            $isCorrect = ($reponse_user == $enigmes['reponse']);
+            $reponse_user = strtolower(trim($_POST['reponse_user']));
+            $reponse_attendue = strtolower($enigmes['reponse']);
+            $isCorrect = strpos($reponse_user, $reponse_attendue) !== false;
 
             $model->addReponse($id, $reponse_user, $isCorrect);
 
