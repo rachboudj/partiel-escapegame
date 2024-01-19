@@ -13,6 +13,7 @@ class Enigme {
         $query->bindValue(':question', $question, PDO::PARAM_STR);
         $query->bindValue(':reponse', $reponse, PDO::PARAM_STR);
         $query->execute();
+        return $this->pdo->lastInsertId();
     }
 
     public function showEnigme() {
@@ -20,5 +21,13 @@ class Enigme {
         $query = $this->pdo->prepare($requete);
         $query->execute();
         return $query->fetchAll();
+    }
+
+    public function getDetailsEnigme($id) {
+        $requete = "SELECT * FROM questions WHERE id_question = :id_question";
+        $query = $this->pdo->prepare($requete);
+        $query->bindValue(':id_question', $id, PDO::PARAM_INT);
+        $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC);
     }
 }
